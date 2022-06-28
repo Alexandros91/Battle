@@ -5,3 +5,13 @@ feature 'Attack player' do
     expect(page).to have_content 'Alex attacked Giorgos'
   end
 end
+
+feature 'Attacking' do
+  scenario 'reduce player 2 HP by 10 points' do
+    sign_in_and_play
+    click_button 'Attack'
+    click_link 'OK'
+    expect(page).not_to have_content 'Giorgos: 60HP'
+    expect(page).to have_content 'Giorgos: 50HP'
+  end
+end
